@@ -1,4 +1,4 @@
-angular.module('fl.meteor', ['angular-meteor'])
+angular.module('fl.meteor', ['angular-meteor', 'fl.common'])
   .factory('MeteorHelper', ['$q', '$meteorUtils', '$rootScope', '$meteor', function($q, $meteorUtils, $rootScope) {
     return {
       excludeAngularKey: excludeAngularKey,
@@ -27,9 +27,30 @@ angular.module('fl.meteor', ['angular-meteor'])
       });
     }
   }])
+  .filter('findByValue', [function() {
+    return function(matchValue, targetList, returnKey, findKey) {
+      return NUTIL.finder(matchValue, targetList).returnKey(returnKey || "label").findKey(findKey || "value").find();
+    }
+  }])
+  .filter('findById', [function() {
+    return function(matchValue, targetList, returnKey) {
+      return NUTIL.finder(matchValue, targetList).returnKey(returnKey).findKey("_id").find();
+    }
+  }])
   .run(run);
 
-run.$inject = ['$rootScope', '$meteor'];
+run.$inject = ['$rootScope', '$meteor', 'AgentManager'];
 
-function run($rootScope, $meteor) {
+function run($rootScope, $meteor, AgentManager) {
+  $rootScope.logout = function() {
+    return $meteor.logout();
+  };
+
+  $rootScope.loginWithFacebook = function() {
+    return $meteor.loginWithFacebook({'loginStyle': AgentManager.isMobile() ? 'redirect' : 'popup'});
+  };
+
+  $rootScope.isAdmin = function() {
+    return Roles.userIsInRole($rootScope.currentUser, [ROLES.ADMIN, ROLES.MANAGER]);
+  };
 }

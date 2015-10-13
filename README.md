@@ -1,5 +1,11 @@
 # fl.meteor
 
+```
+meteor add flynn:utils
+meteor add accounts-password
+meteor add accounts-facebook
+meteor add alanning:roles
+```
 
 # Test
 
