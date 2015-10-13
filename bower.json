@@ -1,0 +1,35 @@
+{
+  "name": "fl.meteor",
+  "main": "fl.meteor.js",
+  "version": "0.0.1",
+  "authors": [
+    "niceilm@naver.com"
+  ],
+  "description": "angluar meteor helper",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "meteor",
+    "angularjs"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/niceilm/fl.meteor",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "spec"
+  ],
+  "dependencies": {
+    "angular": "^1.4.0",
+    "angular-meteor": "~1.0.2",
+    "meteor-client-side": "~1.2.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.0"
+  },
+  "resolutions": {
+    "angular": "^1.4.0"
+  }
+}
