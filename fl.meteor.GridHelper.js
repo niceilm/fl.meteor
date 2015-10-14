@@ -51,7 +51,7 @@ function GridHelper(ModalService, LoadingIndicator) {
   }
 
   function isLast(totalCounts, gridOptions) {
-    return totalCounts && totalCounts.count !== 0 && gridOptions.data.length === totalCounts.count;
+    return gridOptions.data.length === 0 || (totalCounts && totalCounts.count !== 0 && gridOptions.data.length === totalCounts.count);
   }
 
   function confirmRemove($event) {
