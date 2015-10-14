@@ -39,18 +39,27 @@ angular.module('fl.meteor', ['angular-meteor', 'fl.common'])
   }])
   .run(run);
 
-run.$inject = ['$rootScope', '$meteor', 'AgentManager'];
+run.$inject = ['$rootScope', '$meteor'];
 
-function run($rootScope, $meteor, AgentManager) {
-  $rootScope.logout = function() {
+function run($rootScope, $meteor) {
+  $rootScope.logout = logout;
+  $rootScope.loginWithFacebook = loginWithFacebook;
+  $rootScope.loginWithTwitter = loginWithTwitter;
+  $rootScope.isAdmin = isAdmin;
+
+  function logout() {
     return $meteor.logout();
-  };
+  }
 
-  $rootScope.loginWithFacebook = function() {
-    return $meteor.loginWithFacebook({'loginStyle': AgentManager.isMobile() ? 'redirect' : 'popup'});
-  };
+  function loginWithTwitter() {
+    return $meteor.loginWithTwitter(Meteor.isCordova ? {loginStyle: "redirect"} : {});
+  }
 
-  $rootScope.isAdmin = function() {
+  function loginWithFacebook() {
+    return $meteor.loginWithFacebook(Meteor.isCordova ? {loginStyle: "redirect"} : {});
+  }
+
+  function isAdmin() {
     return Roles.userIsInRole($rootScope.currentUser, [ROLES.ADMIN, ROLES.MANAGER]);
-  };
+  }
 }
