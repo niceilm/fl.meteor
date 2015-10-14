@@ -43,6 +43,7 @@ run.$inject = ['$rootScope', '$meteor'];
 
 function run($rootScope, $meteor) {
   $rootScope.logout = logout;
+  $rootScope.loginWithPassword = loginWithPassword;
   $rootScope.loginWithFacebook = loginWithFacebook;
   $rootScope.loginWithTwitter = loginWithTwitter;
   $rootScope.isAdmin = isAdmin;
@@ -57,6 +58,10 @@ function run($rootScope, $meteor) {
 
   function loginWithFacebook() {
     return $meteor.loginWithFacebook(Meteor.isCordova ? {loginStyle: "redirect"} : {});
+  }
+
+  function loginWithPassword(username, password) {
+    return $meteor.loginWithPassword(username, password);
   }
 
   function isAdmin() {
