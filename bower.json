@@ -1,7 +1,7 @@
 {
   "name": "fl.meteor",
   "main": "fl.meteor.js",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "authors": [
     "niceilm@naver.com"
   ],
@@ -24,7 +24,7 @@
   "dependencies": {
     "angular": "^1.4.7",
     "angular-meteor": "~1.0.2",
-    "fl.common": "~0.0.2"
+    "fl.common": "^0.0.6"
   },
   "devDependencies": {
     "meteor-client-side": "~1.2.0",
