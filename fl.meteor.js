@@ -21,10 +21,7 @@ angular.module('fl.meteor', ['angular-meteor', 'fl.common'])
     }
 
     function excludeAngularKey(source) {
-      var rxAngularKey = /^\$/;
-      return _.pick(source, function(value, key) {
-        return !angular.isFunction(value) && !rxAngularKey.test(key);
-      });
+      return angular.fromJson(angular.toJson(source));
     }
   }])
   .filter('findByValue', [function() {
