@@ -10,7 +10,7 @@ angular.module('fl.meteor', ['angular-meteor', 'fl.common'])
 
       $meteorUtils.autorun($rootScope, function() {
         if(!Meteor.loggingIn() && Roles.subscription.ready() && Permissions.subscription.ready()) {
-          if(Permissions.userHasPermissionByState(Meteor.user(), stateName)) {
+          if(Permissions.stateHasPermissionByUser(stateName, Meteor.user())) {
             deferred.resolve(true);
           } else {
             deferred.reject("UNAUTHORIZED");
