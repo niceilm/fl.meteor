@@ -13,7 +13,7 @@ angular.module('fl.meteor', ['angular-meteor', 'fl.common'])
           if(Permissions.stateHasPermissionByUser(stateName, Meteor.user())) {
             deferred.resolve(true);
           } else {
-            deferred.reject("UNAUTHORIZED");
+            deferred.reject(Permissions.getReplaceStateName(stateName) || "UNAUTHORIZED");
           }
         }
       });

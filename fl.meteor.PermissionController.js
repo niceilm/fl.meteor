@@ -7,15 +7,18 @@ function PermissionController($scope, GridHelper, $meteor) {
   $scope.gridTitle = "권한관리";
   $scope.limit = size;
   $scope.query = {};
+  $scope.form = {};
 
   $scope.gridOptions = GridHelper.generateGridOptions({
     columnDefs: [
-      {field: 'state', displayName: '스테이트', cellClass: 'center'},
-      {field: 'roles', displayName: '롤', cellClass: 'center'}
+      {field: 'name', displayName: '스테이트이름', cellClass: 'center'},
+      {field: 'mode', displayName: '모드', cellClass: 'center'},
+      {field: 'roles', displayName: '롤', cellClass: 'center'},
+      {field: 'replaceStateName', displayName: '미권한시이동스테이트', cellClass: 'center'}
     ],
     data: $scope.$meteorCollection(function() {
       $log.debug("$scope.$meteorCollection()");
-      return Meteor.permissions.findByQuery($scope.getReactively("query", true));
+      return Meteor.permissions.find($scope.getReactively("query", true));
     }, false),
     onRegisterApi: function(gridApi) {
       $scope.gridApi = gridApi;
