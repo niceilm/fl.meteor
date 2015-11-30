@@ -26,7 +26,7 @@ function GridHelper(ModalService, LoadingIndicator) {
       selectionRowHeaderWidth: 35,
       rowHeight: 35,
       showGridFooter: true,
-      infiniteScrollPercentage: 30,
+      infiniteScrollRowsFromEnd: 40,
       multiSelect: true,
       columnDefs: [],
       data: []
