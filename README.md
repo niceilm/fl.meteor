@@ -2,6 +2,7 @@
 
 ```
 meteor add flynn:utils
+meteor add flynn:permissions
 meteor add accounts-password
 meteor add accounts-facebook
 meteor add alanning:roles

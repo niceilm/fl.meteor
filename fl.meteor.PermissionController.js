@@ -7,7 +7,12 @@ function PermissionController($scope, GridHelper, $meteor) {
   $scope.gridTitle = "권한관리";
   $scope.limit = size;
   $scope.query = {};
-  $scope.form = {};
+  $scope.form = {
+    name: null,
+    mode: null,
+    roles: [],
+    replaceStateName: null
+  };
 
   $scope.gridOptions = GridHelper.generateGridOptions({
     columnDefs: [
